@@ -2,14 +2,15 @@ var tree = [];
 
 function setup()
 {
-  createCanvas(800, 800);
+  createCanvas(windowWidth, windowHeight);
 	var a = createVector(width / 2, height);
-	var b = createVector(width /2, height - 200);
+	var b = createVector(width /2, height - height / 4);
 	var root = new Branch(a, b);
 
   tree[0] = root;
 }
 
+// press mouse to get next generation of branches
 function mousePressed()
 {
   for (var i = tree.length -1; i >= 0 ; i--)

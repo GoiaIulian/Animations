@@ -41,6 +41,8 @@ function setWalls()
      walls[10] = new Edge(width - (width * 0.2), height * 0.5, width * 0.7, height - (height * 0.2));
 }
 
+// pause animation by pressing the mouse wheel
+// then press again to play
 function mousePressed()
 {
      if (mouseButton === CENTER)

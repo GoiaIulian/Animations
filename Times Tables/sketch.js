@@ -37,6 +37,7 @@ function draw() {
   }
 }
 
+// press mouse wheel to get the animation for the next factor
 function mousePressed()
 {
   if (mouseButton === CENTER)

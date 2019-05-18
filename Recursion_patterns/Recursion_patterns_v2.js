@@ -39,7 +39,8 @@ function createCircleRight(x, y, d)
      }
 }
 
-
+// pause animation by pressing the mouse wheel
+// then press again to play
 function mousePressed()
 {
      if (mouseButton === CENTER)
