@@ -44,6 +44,45 @@ class Boid
           this.applyForce(steer);
      }
 
+     separation(boids)
+     {
+          let d = 50;
+          let total = 0;
+          let steering = createVector();
+          for (let b of boids)
+          {
+               let dist = this.__location.dist(b.__location);
+               if (b != this && dist < d)
+               {
+                    let diff = p5.Vector.sub(this.__location, b.__location);
+                    diff.normalize();
+                    diff.div(dist);
+                    steering.add(diff);
+                    total++;
+               }
+          }
+          if (total > 0)
+          {
+               steering.div(total);
+               steering.normalize();
+               steering.mult(this.__maxSpeed);
+               steering.sub(this.__velocity);
+               steering.limit(this.__maxForce);
+               return steering;
+          }
+     }
+
+     flock(boids)
+     {
+          const b = [...boids];
+          let separation = this.separation(b);
+          if(separation)
+          {
+               separation.mult(1.5);
+          }
+          this.__acceleration.add(separation);
+     }
+
      follow(flowfield)
      {
           let desire = flowfield.lookup(this.__location);

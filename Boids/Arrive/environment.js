@@ -1,22 +1,26 @@
-let wasPressed = false, b;
+let wasPressed = false, boids = [];
 
 function setup()
 {
      createCanvas(windowWidth, windowHeight);
-     b = new Boid();
+     for (let i = 0; i < 70; i++)
+     {
+          boids.push(new Boid());
+     }
 }
 
 function draw()
 {
      background(255);
      ellipse(mouseX, mouseY, 100);
-     let target = createVector(mouseX, mouseY);
-     // let enemy = createVector(mouseX, mouseY);
-     // b.seek(target);
-     // b.flee(enemy);
-     b.arrive(target);
-     b.update();
-     b.show();
+     for (b of boids)
+     {
+          let target = createVector(mouseX, mouseY);
+          b.arrive(target);
+          b.flock(boids);
+          b.update();
+          b.show();
+     }
 }
 
 // pause animation by pressing the mouse wheel

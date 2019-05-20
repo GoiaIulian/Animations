@@ -3,7 +3,7 @@ let wasPressed = false, boids = [], flow;
 function setup()
 {
      createCanvas(windowWidth, windowHeight);
-     for (let i = 0; i < 50; i++)
+     for (let i = 0; i < 80; i++)
      {
           boids.push(new Boid());
      }
@@ -18,6 +18,7 @@ function draw()
      for (let b of boids)
      {
           b.follow(flow);
+          b.flock(boids);
           b.update();
           b.show();
      }
