@@ -72,13 +72,14 @@ class Boid
      {
           let theta = this.__velocity.heading() + PI / 2;
           fill(100);
-          stroke(1);
+          noStroke();
           push();
           translate(this.__location.x, this.__location.y);
           rotate(theta);
           beginShape();
           vertex(0, -this.__r * 2);
           vertex(-this.__r, this.__r * 2);
+          vertex(0, this.__r * 1.5);
           vertex(this.__r, this.__r * 2);
           endShape(CLOSE);
           pop();
